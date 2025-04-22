@@ -18,6 +18,14 @@ import vivaldiIcon from '../assets/vivaldi.png';
 import webkitIcon from '../assets/webkit.png';
 import yandexIcon from '../assets/yandex.png';
 
+// Temporary fallback solution until we have proper icons
+// When adding the official icons, replace these with actual imports
+const arcIcon = chromiumIcon;
+const firefoxDevIcon = firefoxIcon;
+const firefoxNightlyIcon = firefoxIcon;
+const operaGXIcon = operaIcon;
+const operaOneIcon = operaIcon;
+
 const engines = {
   chrome: {
     engineName: 'Google Chrome',
@@ -107,31 +115,31 @@ const engines = {
   // Added browser engines:
   firefoxDeveloperEdition: {
     engineName: 'Firefox Developer Edition',
-    iconPath: firefoxIcon, // Reusing Firefox icon for now
+    iconPath: firefoxDevIcon,
     downloadUrl: 'https://www.mozilla.org/firefox/developer/',
   },
   firefoxNightly: {
     engineName: 'Firefox Nightly',
-    iconPath: firefoxIcon, // Reusing Firefox icon for now
+    iconPath: firefoxNightlyIcon,
     downloadUrl: 'https://www.mozilla.org/firefox/nightly/',
   },
   operaGX: {
     engineName: 'Opera GX',
-    iconPath: operaIcon, // Reusing Opera icon for now
+    iconPath: operaGXIcon,
     disableStandardMode: true,
     defaultMode: 'tabbed',
     downloadUrl: 'https://www.opera.com/gx',
   },
   operaOne: {
     engineName: 'Opera One',
-    iconPath: operaIcon, // Reusing Opera icon for now
+    iconPath: operaOneIcon,
     disableStandardMode: true,
     defaultMode: 'tabbed',
     downloadUrl: 'https://www.opera.com/one',
   },
   arc: {
     engineName: 'Arc Browser',
-    iconPath: chromiumIcon, // Using Chromium icon as a fallback
+    iconPath: arcIcon,
     downloadUrl: 'https://arc.net/',
   },
 };

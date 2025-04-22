@@ -76,6 +76,18 @@ const browserMap = {
     userDataDir: 'com.operasoftware.Opera',
     execFile: 'Opera',
   },
+  operaGX: {
+    name: 'Opera GX',
+    appDirName: 'Opera GX.app',
+    userDataDir: 'com.operasoftware.OperaGX',
+    execFile: 'Opera GX',
+  },
+  operaOne: {
+    name: 'Opera One',
+    appDirName: 'Opera One.app',
+    userDataDir: 'com.operasoftware.OperaOne',
+    execFile: 'Opera One',
+  },
   yandex: {
     name: 'Yandex',
     appDirName: 'Yandex.app',
@@ -93,6 +105,24 @@ const browserMap = {
     appDirName: 'Firefox.app',
     userDataDir: 'Firefox',
     execFile: 'firefox',
+  },
+  firefoxDeveloperEdition: {
+    name: 'Firefox Developer Edition',
+    appDirName: 'Firefox Developer Edition.app',
+    userDataDir: 'Firefox Developer Edition',
+    execFile: 'firefox',
+  },
+  firefoxNightly: {
+    name: 'Firefox Nightly',
+    appDirName: 'Firefox Nightly.app',
+    userDataDir: 'Firefox Nightly',
+    execFile: 'firefox',
+  },
+  arc: {
+    name: 'Arc Browser',
+    appDirName: 'Arc.app',
+    userDataDir: 'Arc',
+    execFile: 'Arc',
   },
 };
 

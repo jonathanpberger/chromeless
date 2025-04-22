@@ -68,10 +68,10 @@ const createAsync = () => new Promise((resolve) => {
         minWidth: 600,
         minHeight: 500,
         webPreferences: {
-          enableRemoteModule: true,
-          contextIsolation: false,
-          nodeIntegration: true,
-          webSecurity: process.env.NODE_ENV === 'production',
+          // Modern Electron security model
+          contextIsolation: true,
+          nodeIntegration: false,
+          webSecurity: true,
           preload: path.join(__dirname, 'preload-menubar.js'),
         },
       },
@@ -177,10 +177,10 @@ const createAsync = () => new Promise((resolve) => {
     frame: true,
     alwaysOnTop: getPreference('alwaysOnTop'),
     webPreferences: {
-      enableRemoteModule: true,
-      contextIsolation: false,
-      nodeIntegration: true,
-      webSecurity: process.env.NODE_ENV === 'production',
+      // Modern Electron security model
+      contextIsolation: true,
+      nodeIntegration: false,
+      webSecurity: true,
       preload: path.join(__dirname, 'preload-main.js'),
     },
   };
