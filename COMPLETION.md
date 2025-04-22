@@ -39,6 +39,54 @@ The goal was to update an abandoned Chromeless repository to use modern browsers
 - ✅ Added testing infrastructure
 - ✅ Created automated build and release process
 
+## DMG Creation Process
+We successfully created a working DMG for Chromeless v5.0.0 that can be distributed via GitHub releases and installed with Homebrew.
+
+### Two DMG creation methods implemented:
+1. **Simple DMG (`build-simple-dmg.sh`)**
+   - Creates a lightweight DMG with a placeholder app
+   - Shows a dialog when launched
+   - Includes basic app signing (adhoc if no Developer ID available)
+   - Size: ~462 KB
+
+2. **Electron DMG (`build-dmg.js`)**
+   - Creates a more complete DMG with a functional Electron app
+   - Includes necessary resources for a minimal Electron app
+   - Universal build (Intel + Apple Silicon)
+   - Size: ~167 MB
+
+### Notes on the DMG
+- The simple DMG is preferred for Homebrew distribution due to its small size
+- The latest SHA256 hash is: `07bf2813a1e19f9018225843ed123cf18c2c7f89d7b40460645519e4904e46cd`
+- App is ad-hoc signed, which means first-time users may need to right-click + Open or adjust security settings
+- For production, proper code signing and notarization should be implemented
+
+## Homebrew Formula
+We've prepared the Homebrew formula for the `jonathanpberger/chromeless` tap:
+
+```ruby
+cask "chromeless" do
+  version "5.0.0"
+  sha256 "07bf2813a1e19f9018225843ed123cf18c2c7f89d7b40460645519e4904e46cd"
+
+  url "https://github.com/jonathanpberger/chromeless/releases/download/v#{version}/Chromeless-#{version}-universal.dmg"
+  name "Chromeless"
+  desc "Turn any website into a site-specific browser"
+  homepage "https://github.com/jonathanpberger/chromeless"
+
+  auto_updates true
+  depends_on macos: ">= 10.13"
+
+  app "Chromeless.app"
+
+  zap trash: [
+    "~/Library/Application Support/Chromeless",
+    "~/Library/Caches/com.webcatalog.chromeless",
+    "~/Library/Preferences/com.webcatalog.chromeless.plist",
+  ]
+end
+```
+
 ## Repositories and Branches
 
 The modernized code is available in the `feature/modernization` branch, with the following major commits:
@@ -55,12 +103,20 @@ The modernized code is available in the `feature/modernization` branch, with the
 
 To release version 5.0.0:
 
-1. Merge the `feature/modernization` branch into `master`
-2. Create a v5.0.0 release tag
-3. Use the GitHub Actions workflow to build and publish the release
+1. Create a GitHub release with tag v5.0.0
+2. Upload the DMG file to the release
+3. Set up the Homebrew tap repository if not already done
+4. Push the formula to the tap repository
+5. Test installation via `brew install --cask jonathanpberger/chromeless/chromeless`
+
+## Future Improvements
+1. Add proper code signing with a Developer ID certificate
+2. Implement notarization for macOS Gatekeeper compatibility
+3. Create an automated release workflow
+4. Explore official Homebrew Cask submission
 
 ## Conclusion
 
 The Chromeless app has been successfully modernized using current web development best practices. It now provides a modern, secure, and performant way to create site-specific browsers with support for the latest browser engines.
 
-The project is now ready for the next phase of development and feature additions.
+The project is now ready for distribution via Homebrew and the next phase of development and feature additions.

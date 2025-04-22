@@ -42,6 +42,12 @@ cat > "${TEMP_DIR}/${APP_NAME}.app/Contents/Info.plist" << EOF
   <string>10.13.0</string>
   <key>NSHighResolutionCapable</key>
   <true/>
+  <key>NSAppleEventsUsageDescription</key>
+  <string>This application needs access to Automation features.</string>
+  <key>NSAppleScriptEnabled</key>
+  <true/>
+  <key>LSApplicationCategoryType</key>
+  <string>public.app-category.utilities</string>
 </dict>
 </plist>
 EOF
@@ -50,17 +56,44 @@ EOF
 cp "./build-resources/icon.icns" "${TEMP_DIR}/${APP_NAME}.app/Contents/Resources/"
 
 # Create a simple executable
-cat > "${TEMP_DIR}/${APP_NAME}.app/Contents/MacOS/app" << EOF
-#!/bin/bash
-osascript -e 'tell app "System Events" to display dialog "This is a placeholder app for ${APP_NAME} ${VERSION}.\n\nThank you for installing with Homebrew!" buttons {"OK"} default button 1 with title "${APP_NAME} ${VERSION}"'
+cat > "${TEMP_DIR}/${APP_NAME}.app/Contents/MacOS/app" << 'EOF'
+#!/usr/bin/env bash
+
+# Display dialog using AppleScript
+osascript <<EOD
+tell application "System Events"
+  activate
+  display dialog "This is a placeholder app for Chromeless 5.0.0.\n\nThank you for installing with Homebrew!" buttons {"OK"} default button 1 with title "Chromeless 5.0.0"
+end tell
+EOD
+
+exit 0
 EOF
 
 # Make it executable
 chmod +x "${TEMP_DIR}/${APP_NAME}.app/Contents/MacOS/app"
 
+# Sign the app if a developer ID is available
+if [ -n "$(security find-identity -v -p codesigning | grep 'Developer ID Application')" ]; then
+  echo "Signing app with developer ID..."
+  IDENTITY=$(security find-identity -v -p codesigning | grep 'Developer ID Application' | head -1 | sed -E 's/.*\) ([A-F0-9]+) "(.*)"/\2/')
+  codesign --force --options runtime --deep --sign "$IDENTITY" "${TEMP_DIR}/${APP_NAME}.app"
+else
+  echo "No Developer ID found. Creating unsigned app (may trigger Gatekeeper warnings)."
+  # Ad-hoc signing to make it at least work on the same machine
+  codesign --force --deep --sign - "${TEMP_DIR}/${APP_NAME}.app"
+fi
+
 # Create DMG
 echo "Creating DMG file..."
 hdiutil create -volname "${VOLUME_NAME}" -srcfolder "${TEMP_DIR}" -ov -format UDZO "${DEST_DIR}/${DMG_NAME}"
+
+# Sign the DMG if a developer ID is available
+if [ -n "$(security find-identity -v -p codesigning | grep 'Developer ID Application')" ]; then
+  echo "Signing DMG with developer ID..."
+  IDENTITY=$(security find-identity -v -p codesigning | grep 'Developer ID Application' | head -1 | sed -E 's/.*\) ([A-F0-9]+) "(.*)"/\2/')
+  codesign --force --sign "$IDENTITY" "${DEST_DIR}/${DMG_NAME}"
+fi
 
 # Show hash
 echo "DMG created: ${DEST_DIR}/${DMG_NAME}"
