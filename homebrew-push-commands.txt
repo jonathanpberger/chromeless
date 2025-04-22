@@ -3,10 +3,10 @@
 # SHA256 hash options:
 # 
 # For the simple placeholder DMG (462 KB):
-# 07bf2813a1e19f9018225843ed123cf18c2c7f89d7b40460645519e4904e46cd
+# 6cfb29326b1cfb3036336b1bbdccc17da6a4874d554404a662a9239d8de711ef
 #
-# For the full Chromeless application DMG (184 MB):
-# 42179bdfa67d80b1a4843a599a1e3fa0fd7427f9bf90038c82c8f6f72175c946
+# Note: A working copy of the original app has been saved to:
+# ~/Downloads/Working-Chromeless-DMG.dmg
 
 # Clone the homebrew tap repository (if needed)
 cd ~/workspace
@@ -18,7 +18,7 @@ mkdir -p Casks
 cat > Casks/chromeless.rb << 'EOF'
 cask "chromeless" do
   version "5.0.0"
-  sha256 "07bf2813a1e19f9018225843ed123cf18c2c7f89d7b40460645519e4904e46cd"
+  sha256 "6cfb29326b1cfb3036336b1bbdccc17da6a4874d554404a662a9239d8de711ef"
 
   url "https://github.com/jonathanpberger/chromeless/releases/download/v#{version}/Chromeless-#{version}-universal.dmg"
   name "Chromeless"

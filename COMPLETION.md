@@ -57,16 +57,16 @@ We successfully created a working DMG for Chromeless v5.0.0 that can be distribu
 
 ### Notes on the DMG
 
+#### Original Working DMG
+- A clean working copy of the original Chromeless app has been preserved
+- Available at: `~/Downloads/Working-Chromeless-DMG.dmg`
+- Contains the complete original app functionality 
+
 #### Simple DMG (placeholder)
 - The simple DMG is only ~462 KB
-- SHA256 hash: `07bf2813a1e19f9018225843ed123cf18c2c7f89d7b40460645519e4904e46cd`
-- Just displays a dialogue box when launched
-
-#### Full DMG (complete application)
-- The full DMG contains the complete Chromeless application (~184 MB)
-- SHA256 hash: `42179bdfa67d80b1a4843a599a1e3fa0fd7427f9bf90038c82c8f6f72175c946`
-- Contains the actual Chromeless application functionality
-- Updated to replace placeholder text with the real app
+- Latest SHA256 hash: `6cfb29326b1cfb3036336b1bbdccc17da6a4874d554404a662a9239d8de711ef`
+- Shows a simple dialog when launched
+- Ideal for Homebrew distribution due to small size
 
 Both DMGs are ad-hoc signed, which means first-time users may need to right-click + Open or adjust security settings. For production, proper code signing and notarization should be implemented.
 
