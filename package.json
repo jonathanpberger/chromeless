@@ -25,10 +25,10 @@
     "test:coverage": "jest --coverage",
     "migrate-mui": "node scripts/migrate-mui-v5.js"
   },
-  "repository": "https://github.com/webcatalog/chromeless",
+  "repository": "https://github.com/jonathanpberger/chromeless",
   "author": {
-    "name": "WebCatalog Ltd",
-    "email": "contact@webcatalog.ltd"
+    "name": "Jonathan Berger",
+    "email": "jonathan.p.berger@gmail.com"
   },
   "dependencies": {
     "worker-loader": "^3.0.8"
@@ -54,8 +54,6 @@
     "@testing-library/user-event": "14.5.2",
     "axios": "1.6.5",
     "babel-jest": "29.7.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
     "blueimp-md5": "2.19.0",
     "cheerio": "1.0.0-rc.12",
     "classnames": "2.5.1",
@@ -63,6 +61,7 @@
     "comlink": "4.4.1",
     "concurrently": "8.2.2",
     "copy-webpack-plugin": "11.0.0",
+    "core-js": "3",
     "cross-env": "7.0.3",
     "decompress": "4.2.1",
     "electron": "28.1.4",

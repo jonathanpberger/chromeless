@@ -13,7 +13,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/test/setup.js'],
   testMatch: ['<rootDir>/src/**/?(*.)test.{js,jsx}'],
   transform: {
-    '^.+\\.(js|jsx)$': '<rootDir>/node_modules/babel-jest',
+    '^.+\\.(js|jsx)$': ['babel-jest', { configFile: './babel.config.js' }],
     '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/test/fileTransformer.js',
   },
   moduleNameMapper: {
