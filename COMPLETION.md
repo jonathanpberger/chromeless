@@ -56,10 +56,18 @@ We successfully created a working DMG for Chromeless v5.0.0 that can be distribu
    - Size: ~167 MB
 
 ### Notes on the DMG
-- The simple DMG is preferred for Homebrew distribution due to its small size
-- The latest SHA256 hash is: `07bf2813a1e19f9018225843ed123cf18c2c7f89d7b40460645519e4904e46cd`
-- App is ad-hoc signed, which means first-time users may need to right-click + Open or adjust security settings
-- For production, proper code signing and notarization should be implemented
+
+#### Simple DMG (placeholder)
+- The simple DMG is only ~462 KB
+- SHA256 hash: `07bf2813a1e19f9018225843ed123cf18c2c7f89d7b40460645519e4904e46cd`
+- Just displays a dialogue box when launched
+
+#### Full DMG (complete application)
+- The full DMG contains the complete Chromeless application (~184 MB)
+- SHA256 hash: `33953ed2c12c89772144ceaada9377ca5bb9ad08fcc33870e850ad132d4f5319`
+- Contains the actual Chromeless application functionality
+
+Both DMGs are ad-hoc signed, which means first-time users may need to right-click + Open or adjust security settings. For production, proper code signing and notarization should be implemented.
 
 ## Homebrew Formula
 We've prepared the Homebrew formula for the `jonathanpberger/chromeless` tap:

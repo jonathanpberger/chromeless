@@ -1,7 +1,12 @@
 # Commands to update and push changes to the homebrew-tap repository for Chromeless v5.0.0
 
-# SHA256 hash for the DMG file
+# SHA256 hash options:
+# 
+# For the simple placeholder DMG (462 KB):
 # 07bf2813a1e19f9018225843ed123cf18c2c7f89d7b40460645519e4904e46cd
+#
+# For the full Chromeless application DMG (184 MB):
+# 33953ed2c12c89772144ceaada9377ca5bb9ad08fcc33870e850ad132d4f5319
 
 # Clone the homebrew tap repository (if needed)
 cd ~/workspace
