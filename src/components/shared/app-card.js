@@ -108,7 +108,7 @@ const styles = (theme) => ({
   },
 });
 
-const AppCard = React.memo((props) => {
+const AppCard = (props) => {
   const {
     cancelable,
     category,
@@ -350,7 +350,7 @@ const AppCard = React.memo((props) => {
       </Paper>
     </Grid>
   );
-};
+}
 
 AppCard.defaultProps = {
   category: undefined,

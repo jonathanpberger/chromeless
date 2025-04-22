@@ -1,0 +1,10 @@
+# Commands to update and push changes to the homebrew-tap repository
+
+cd /Users/jpb/workspace/homebrew-tap
+git add Casks/chromeless.rb
+git commit -m "Update Chromeless to v5.0.0 with correct SHA"
+git push origin main
+
+# After pushing the changes, users can update Chromeless via Homebrew:
+brew update
+brew upgrade --cask jonathanpberger/tap/chromeless

@@ -3,7 +3,9 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 import semver from 'semver';
 import { INSTALLING, INSTALLED } from '../../constants/app-statuses';
-import { scriptVersion } from '../../../package.json';
+import packageJson from '../../../package.json';
+
+const { scriptVersion } = packageJson;
 
 export const isInstalledApp = (id, state) => {
   const { apps } = state.appManagement;
