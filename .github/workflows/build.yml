@@ -22,6 +22,14 @@ jobs:
           CI_BUILD_TAG: true
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+      - name: Calculate SHA256
+        run: |
+          echo "DMG_SHA256=$(shasum -a 256 dist/Chromeless-*.dmg | awk '{print $1}')" >> $GITHUB_ENV
+      - name: Generate Homebrew Cask
+        run: |
+          sed -i '' "s/:no_check/\"${{ env.DMG_SHA256 }}\"/" homebrew-cask/chromeless.rb
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -30,6 +38,7 @@ jobs:
             dist/*.dmg
             dist/*.zip
             dist/*.yml
+            homebrew-cask/chromeless.rb
 
   build-windows:
     runs-on: windows-latest
@@ -43,6 +52,9 @@ jobs:
         run: yarn install
       - name: Build app
         run: yarn dist-dev
+        env:
+          CSC_LINK: ${{ secrets.WINDOWS_CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.WINDOWS_CSC_KEY_PASSWORD }}
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
