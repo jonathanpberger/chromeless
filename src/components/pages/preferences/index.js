@@ -30,7 +30,7 @@ import getEngineName from '../../../helpers/get-engine-name';
 
 import { getInstallingAppsAsList } from '../../../state/app-management/utils';
 
-import { open as openDialogAbout } from '../../../state/dialog-about/actions';
+import { open as openDialogAbout } from '../../../state/dialog-about/slice';
 import { open as openDialogOpenSourceNotices } from '../../../state/dialog-open-source-notices/actions';
 import { open as openDialogSetInstallationPath } from '../../../state/dialog-set-installation-path/actions';
 import { open as openDialogSetPreferredEngine } from '../../../state/dialog-set-preferred-engine/actions';

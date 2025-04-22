@@ -14,7 +14,7 @@ import Badge from '@mui/material/Badge';
 
 import connectComponent from '../../helpers/connect-component';
 
-import { changeRoute } from '../../state/router/actions';
+import { changeRoute } from '../../state/router/slice';
 import { getAppBadgeCount } from '../../state/app-management/utils';
 
 import {

@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 
 import connectComponent from '../../../helpers/connect-component';
 
-import { fetchLatestTemplateVersionAsync } from '../../../state/general/actions';
+import { fetchLatestTemplateVersionAsync } from '../../../state/general/slice';
 
 import EnhancedAppBar from '../../shared/enhanced-app-bar';
 

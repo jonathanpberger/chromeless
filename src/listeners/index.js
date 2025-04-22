@@ -9,17 +9,17 @@ import {
   clean as cleanAppManagement,
   setScanningForInstalled,
 } from '../state/app-management/actions';
-import { changeRoute } from '../state/router/actions';
+import { changeRoute } from '../state/router/slice';
 import { setPreference, setPreferences } from '../state/preferences/actions';
 import { setSystemPreference } from '../state/system-preferences/actions';
-import { open as openDialogAbout } from '../state/dialog-about/actions';
+import { open as openDialogAbout } from '../state/dialog-about/slice';
 import { updateUpdater } from '../state/updater/actions';
 import {
   updateInstallationProgress,
   updateIsFullScreen,
   updateIsMaximized,
   updateShouldUseDarkColors,
-} from '../state/general/actions';
+} from '../state/general/slice';
 import {
   getShouldUseDarkColors,
 } from '../senders';

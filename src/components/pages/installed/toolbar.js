@@ -14,7 +14,7 @@ import SortIcon from '@mui/icons-material/Sort';
 
 import connectComponent from '../../../helpers/connect-component';
 
-import { fetchLatestTemplateVersionAsync } from '../../../state/general/actions';
+import { fetchLatestTemplateVersionAsync } from '../../../state/general/slice';
 import { getOutdatedAppsAsList } from '../../../state/app-management/utils';
 import { updateAllApps } from '../../../state/app-management/actions';
 

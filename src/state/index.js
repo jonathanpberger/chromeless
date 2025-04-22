@@ -4,7 +4,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import appManagement from './app-management/reducers';
-import dialogAbout from './dialog-about/reducers';
+import dialogAbout from './dialog-about/slice';
 import dialogChooseEngine from './dialog-choose-engine/reducers';
 import dialogCreateCustomApp from './dialog-create-custom-app/reducers';
 import dialogEditApp from './dialog-edit-app/reducers';
@@ -15,7 +15,7 @@ import browsers from './browsers/reducers';
 import general from './general/slice';
 import installed from './installed/reducers';
 import preferences from './preferences/reducers';
-import router from './router/reducers';
+import router from './router/slice';
 import systemPreferences from './system-preferences/reducers';
 import updater from './updater/reducers';
 
