@@ -4,14 +4,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import IconButton from '@material-ui/core/IconButton';
-import Paper from '@material-ui/core/Paper';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
-import { fade } from '@material-ui/core/styles';
+import IconButton from '@mui/material/IconButton';
+import Paper from '@mui/material/Paper';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import { fade } from '@mui/material/styles';
 
-import SearchIcon from '@material-ui/icons/Search';
-import CloseIcon from '@material-ui/icons/Close';
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
 
 import connectComponent from '../../../helpers/connect-component';
 
@@ -120,19 +120,19 @@ class SearchBox extends React.Component {
       </>
     );
     return (
-      <Paper elevation={1} className={classes.toolbarSearchContainer}>
-        <div className={classes.toolbarSectionSearch}>
+      <Paper elevation={1} sx={classes.toolbarSearchContainer}>
+        <div sx={classes.toolbarSectionSearch}>
           <SearchIcon
-            className={classes.searchIcon}
+            sx={classes.searchIcon}
             fontSize="small"
           />
           <Typography
-            className={classes.searchBarText}
+            sx={classes.searchBarText}
             color="inherit"
             variant="subtitle1"
           >
             <input
-              className={classes.input}
+              sx={classes.input}
               onChange={(e) => onUpdateQuery(e.target.value)}
               onInput={(e) => onUpdateQuery(e.target.value)}
               onKeyDown={(e) => {

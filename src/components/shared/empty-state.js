@@ -4,8 +4,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import Typography from '@mui/material/Typography';
+import { withStyles } from '@mui/material/styles';
 
 const styles = (theme) => ({
   root: {
@@ -36,12 +36,12 @@ const EmptyState = (props) => {
   const Icon = icon;
 
   return (
-    <div className={classes.root}>
-      <Icon className={classes.icon} color="action" />
+    <div sx={classes.root}>
+      <Icon sx={classes.icon} color="action" />
       <br />
       {title && (
         <Typography
-          className={classes.title}
+          sx={classes.title}
           variant="h6"
           color="inherit"
         >

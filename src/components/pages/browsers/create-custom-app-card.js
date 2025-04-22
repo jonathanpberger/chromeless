@@ -4,10 +4,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import AddIcon from '@material-ui/icons/Add';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import AddIcon from '@mui/icons-material/Add';
 
 import connectComponent from '../../../helpers/connect-component';
 
@@ -52,14 +52,14 @@ const styles = (theme) => ({
 const CreateCustomAppCard = ({ classes, onOpenDialogCreateCustomApp }) => (
   <Grid item>
     <Paper
-      className={classes.card}
+      sx={classes.card}
       elevation={0}
       role="link"
       tabIndex="0"
       onClick={() => onOpenDialogCreateCustomApp({ urlDisabled: true })}
     >
-      <AddIcon className={classes.icon} />
-      <Typography variant="subtitle2" className={classes.desc}>
+      <AddIcon sx={classes.icon} />
+      <Typography variant="subtitle2" sx={classes.desc}>
         Add Browser Instance
       </Typography>
     </Paper>

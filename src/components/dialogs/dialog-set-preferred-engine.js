@@ -4,14 +4,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
-import Grid from '@material-ui/core/Grid';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Grid from '@mui/material/Grid';
 
-import HelpIcon from '@material-ui/icons/Help';
+import HelpIcon from '@mui/icons-material/Help';
 
 import connectComponent from '../../helpers/connect-component';
 
@@ -82,13 +82,13 @@ const DialogSetPreferredEngine = (props) => {
           </Grid>
         </Grid>
       </EnhancedDialogTitle>
-      <DialogContent className={classes.content}>
+      <DialogContent sx={classes.content}>
         <EngineList
           onEngineSelected={(selectedEngine) => onUpdateForm({ engine: selectedEngine })}
           engine={engine}
         />
       </DialogContent>
-      <DialogActions className={classes.dialogActions}>
+      <DialogActions sx={classes.dialogActions}>
         <Button
           onClick={onClose}
         >

@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Menu from '@material-ui/core/Menu';
+import Menu from '@mui/material/Menu';
 
 class StatedMenu extends React.Component {
   constructor(props) {

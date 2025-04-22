@@ -4,13 +4,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
 
-import RefreshIcon from '@material-ui/icons/Refresh';
-import SortIcon from '@material-ui/icons/Sort';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import SortIcon from '@mui/icons-material/Sort';
 
 import connectComponent from '../../../helpers/connect-component';
 
@@ -63,10 +63,10 @@ const Toolbar = ({
   outdatedAppCount,
   sortInstalledAppBy,
 }) => (
-  <div className={classes.root}>
-    <div className={classes.left}>
+  <div sx={classes.root}>
+    <div sx={classes.left}>
       {activeQuery.length > 0 ? (
-        <Typography variant="body2" color="textSecondary" className={classes.statusText}>
+        <Typography variant="body2" color="textSecondary" sx={classes.statusText}>
           Search results for
           &quot;
           {activeQuery}
@@ -74,7 +74,7 @@ const Toolbar = ({
         </Typography>
       ) : (
         <>
-          <Typography variant="body2" color="textSecondary" className={classes.statusText}>
+          <Typography variant="body2" color="textSecondary" sx={classes.statusText}>
             <span>{outdatedAppCount}</span>
             <span>&nbsp;Pending Updates</span>
           </Typography>
@@ -88,7 +88,7 @@ const Toolbar = ({
         </>
       )}
     </div>
-    <div className={classes.right}>
+    <div sx={classes.right}>
       <Tooltip title="Sort by...">
         <IconButton
           size="small"

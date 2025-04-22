@@ -6,14 +6,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
 
 import connectComponent from '../../helpers/connect-component';
 import isUrl from '../../helpers/is-url';
@@ -130,10 +130,10 @@ const DialogEditApp = (props) => {
             error={Boolean(urlError)}
           />
         )}
-        <Grid container spacing={1} className={classes.grid} wrap="nowrap">
+        <Grid container spacing={1} sx={classes.grid} wrap="nowrap">
           <Grid item xs={12} sm="auto">
-            <div className={classes.iconContainer}>
-              <img src={iconPath} alt={name} className={classes.icon} />
+            <div sx={classes.iconContainer}>
+              <img src={iconPath} alt={name} sx={classes.icon} />
             </div>
           </Grid>
           {!id.startsWith('custom-') ? (
@@ -170,14 +170,14 @@ const DialogEditApp = (props) => {
               </Button>
               <Typography
                 variant="caption"
-                className={classes.caption}
+                sx={classes.caption}
               >
                 PNG, JPEG, GIF, TIFF or BMP.
               </Typography>
               <Button
                 variant="outlined"
                 size="small"
-                className={classes.buttonBot}
+                sx={classes.buttonBot}
                 disabled={Boolean(!url || urlError || downloadingIcon)}
                 onClick={() => onGetIconFromInternet()}
               >
@@ -187,7 +187,7 @@ const DialogEditApp = (props) => {
               <Button
                 variant="outlined"
                 size="small"
-                className={classes.buttonBot}
+                sx={classes.buttonBot}
                 disabled={Boolean(!url || urlError || urlDisabled || downloadingIcon)}
                 onClick={() => onGetIconFromAppSearch()}
               >
@@ -197,7 +197,7 @@ const DialogEditApp = (props) => {
               <Button
                 variant="outlined"
                 size="small"
-                className={classes.buttonBot}
+                sx={classes.buttonBot}
                 disabled={!(icon || internetIcon) || downloadingIcon}
                 onClick={() => onUpdateForm({ icon: null, internetIcon: null })}
               >
@@ -207,8 +207,8 @@ const DialogEditApp = (props) => {
           )}
         </Grid>
       </DialogContent>
-      <DialogActions className={classes.dialogActions}>
-        <div className={classes.dialogActionsLeft}>
+      <DialogActions sx={classes.dialogActions}>
+        <div sx={classes.dialogActionsLeft}>
           <Button
             onClick={() => {
               onClose();

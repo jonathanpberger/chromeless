@@ -10,14 +10,14 @@ import {
   SearchBox as ElasticSearchBox,
 } from '@elastic/react-search-ui';
 
-import CloseIcon from '@material-ui/icons/Close';
-import SearchIcon from '@material-ui/icons/Search';
+import CloseIcon from '@mui/icons-material/Close';
+import SearchIcon from '@mui/icons-material/Search';
 
-import IconButton from '@material-ui/core/IconButton';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
-import { fade } from '@material-ui/core/styles';
+import IconButton from '@mui/material/IconButton';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
+import { fade } from '@mui/material/styles';
 
 import connectComponent from '../../../helpers/connect-component';
 
@@ -107,14 +107,14 @@ class SearchBox extends React.Component {
     } = this.props;
 
     return (
-      <Paper elevation={0} className={classes.toolbarSearchContainer}>
-        <div className={classes.toolbarSectionSearch}>
+      <Paper elevation={0} sx={classes.toolbarSearchContainer}>
+        <div sx={classes.toolbarSectionSearch}>
           <SearchIcon
-            className={classes.searchIcon}
+            sx={classes.searchIcon}
             fontSize="small"
           />
           <Typography
-            className={classes.searchBarText}
+            sx={classes.searchBarText}
             color="inherit"
             variant="subtitle1"
           >

@@ -6,11 +6,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
 
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import { requestShowAppMenu } from '../../senders';
 
@@ -123,14 +123,14 @@ const EnhancedAppBar = ({
   return (
     <AppBar
       position="static"
-      className={classes.appBar}
+      sx={classes.appBar}
       color={shouldUseDarkColors ? 'default' : 'primary'}
     >
       <Toolbar
         variant="dense"
-        className={classes.toolbar}
+        sx={classes.toolbar}
       >
-        <div className={classes.left} onDoubleClick={onDoubleClick}>
+        <div sx={classes.left} onDoubleClick={onDoubleClick}>
           {shouldShowMenuButton && (
             <IconButton
               size="small"
@@ -146,10 +146,10 @@ const EnhancedAppBar = ({
             </IconButton>
           )}
         </div>
-        <div className={classes.center} onDoubleClick={onDoubleClick}>
+        <div sx={classes.center} onDoubleClick={onDoubleClick}>
           {center}
         </div>
-        <div className={classes.right} onDoubleClick={onDoubleClick} />
+        <div sx={classes.right} onDoubleClick={onDoubleClick} />
       </Toolbar>
     </AppBar>
   );

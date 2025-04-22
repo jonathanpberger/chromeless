@@ -22,7 +22,8 @@
     "dist-dev": "yarn build && cross-env NODE_ENV=production CSC_IDENTITY_AUTO_DISCOVERY=false node dist.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "migrate-mui": "node scripts/migrate-mui-v5.js"
   },
   "repository": "https://github.com/webcatalog/chromeless",
   "author": {
@@ -60,7 +61,7 @@
     "electron": "28.1.4",
     "electron-builder": "24.9.1",
     "electron-context-menu": "3.6.1",
-    "electron-notarize": "2.2.0",
+    "electron-notarize": "1.2.1",
     "electron-settings": "4.0.2",
     "electron-updater": "6.1.7",
     "electron-window-state": "5.0.3",
@@ -74,6 +75,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "follow-redirects": "1.15.5",
     "fs-extra": "11.2.0",
+    "glob": "10.3.10",
     "hasha": "5.2.2",
     "identity-obj-proxy": "3.0.0",
     "icon-gen": "3.0.1",

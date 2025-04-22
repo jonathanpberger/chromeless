@@ -4,10 +4,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '@material-ui/core/Button';
-import ErrorIcon from '@material-ui/icons/Error';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import Button from '@mui/material/Button';
+import ErrorIcon from '@mui/icons-material/Error';
+import Typography from '@mui/material/Typography';
+import { withStyles } from '@mui/material/styles';
 
 const styles = (theme) => ({
   root: {
@@ -35,8 +35,8 @@ const NoConnection = (props) => {
   } = props;
 
   return (
-    <div className={classes.root}>
-      <ErrorIcon className={classes.icon} color="textPrimary" />
+    <div sx={classes.root}>
+      <ErrorIcon sx={classes.icon} color="textPrimary" />
       <br />
       <Typography
         color="inherit"
@@ -52,7 +52,7 @@ const NoConnection = (props) => {
         Please check your Internet connection.
       </Typography>
       <Button
-        className={classes.tryAgainButton}
+        sx={classes.tryAgainButton}
         color="primary"
         onClick={onTryAgainButtonClick}
       >

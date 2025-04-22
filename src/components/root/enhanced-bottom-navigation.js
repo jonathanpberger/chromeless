@@ -3,14 +3,14 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Paper from '@material-ui/core/Paper';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import HomeIcon from '@material-ui/icons/Home';
-import SystemUpdateIcon from '@material-ui/icons/SystemUpdate';
-import SettingsIcon from '@material-ui/icons/Settings';
-import PublicIcon from '@material-ui/icons/Public';
-import Badge from '@material-ui/core/Badge';
+import Paper from '@mui/material/Paper';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import HomeIcon from '@mui/icons-material/Home';
+import SystemUpdateIcon from '@mui/icons-material/SystemUpdate';
+import SettingsIcon from '@mui/icons-material/Settings';
+import PublicIcon from '@mui/icons-material/Public';
+import Badge from '@mui/material/Badge';
 
 import connectComponent from '../../helpers/connect-component';
 
@@ -24,7 +24,7 @@ import {
   ROUTE_PREFERENCES,
 } from '../../constants/routes';
 
-const styles = {
+const styles = (theme) => ({
   paper: {
     zIndex: 1,
     alignSelf: 'flex-end',
@@ -40,34 +40,34 @@ const styles = {
     fontSize: '0.8rem !important',
     paddingLeft: 4,
   },
-};
+});
 
 const EnhancedBottomNavigation = ({
   classes, route, appBadgeCount, onChangeRoute,
 }) => (
-  <Paper elevation={1} className={classes.paper}>
+  <Paper elevation={1} sx={classes.paper}>
     <BottomNavigation
       value={route}
       onChange={(e, value) => onChangeRoute(value)}
       showLabels
-      classes={{ root: classes.bottomNavigation }}
+      sx={classes.bottomNavigation}
     >
       <BottomNavigationAction
         label="Catalog"
         icon={<HomeIcon />}
         value={ROUTE_HOME}
-        classes={{
-          wrapper: classes.bottomNavigationActionWrapper,
-          label: classes.bottomNavigationActionLabel,
+        sx={{
+          '& .MuiBottomNavigationAction-wrapper': classes.bottomNavigationActionWrapper,
+          '& .MuiBottomNavigationAction-label': classes.bottomNavigationActionLabel,
         }}
       />
       <BottomNavigationAction
         label="Browsers"
         icon={<PublicIcon />}
         value={ROUTE_BROWSERS}
-        classes={{
-          wrapper: classes.bottomNavigationActionWrapper,
-          label: classes.bottomNavigationActionLabel,
+        sx={{
+          '& .MuiBottomNavigationAction-wrapper': classes.bottomNavigationActionWrapper,
+          '& .MuiBottomNavigationAction-label': classes.bottomNavigationActionLabel,
         }}
       />
       <BottomNavigationAction
@@ -78,18 +78,18 @@ const EnhancedBottomNavigation = ({
           </Badge>
         ) : <SystemUpdateIcon />}
         value={ROUTE_INSTALLED}
-        classes={{
-          wrapper: classes.bottomNavigationActionWrapper,
-          label: classes.bottomNavigationActionLabel,
+        sx={{
+          '& .MuiBottomNavigationAction-wrapper': classes.bottomNavigationActionWrapper,
+          '& .MuiBottomNavigationAction-label': classes.bottomNavigationActionLabel,
         }}
       />
       <BottomNavigationAction
         label="Preferences"
         icon={<SettingsIcon />}
         value={ROUTE_PREFERENCES}
-        classes={{
-          wrapper: classes.bottomNavigationActionWrapper,
-          label: classes.bottomNavigationActionLabel,
+        sx={{
+          '& .MuiBottomNavigationAction-wrapper': classes.bottomNavigationActionWrapper,
+          '& .MuiBottomNavigationAction-label': classes.bottomNavigationActionLabel,
         }}
       />
     </BottomNavigation>

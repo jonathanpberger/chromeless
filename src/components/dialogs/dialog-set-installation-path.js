@@ -4,15 +4,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Typography from '@material-ui/core/Typography';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import InputAdornment from '@mui/material/InputAdornment';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Typography from '@mui/material/Typography';
 
 import connectComponent from '../../helpers/connect-component';
 
@@ -57,7 +57,7 @@ const DialogSetInstallationPath = (props) => {
         Set Custom Installation Path
       </EnhancedDialogTitle>
       <DialogContent>
-        <Typography align="center" variant="body2" className={classes.top}>
+        <Typography align="center" variant="body2" sx={classes.top}>
           Use at your own risk.
         </Typography>
         <TextField
@@ -101,7 +101,7 @@ const DialogSetInstallationPath = (props) => {
           label="Require sudo for installation"
         />
       </DialogContent>
-      <DialogActions className={classes.dialogActions}>
+      <DialogActions sx={classes.dialogActions}>
         <Button
           onClick={onClose}
         >

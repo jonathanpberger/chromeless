@@ -37,7 +37,7 @@ const DefinedAppBar = ({
 }) => (
   <EnhancedAppBar
     center={(
-      <div className={classes.centerContainer}>
+      <div sx={classes.centerContainer}>
         <SearchBox />
       </div>
     )}

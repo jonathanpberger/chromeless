@@ -4,8 +4,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
 
 import connectComponent from '../../helpers/connect-component';
 
@@ -40,14 +40,14 @@ const DialogOpenSourceNotices = ({
 
   return (
     <Dialog
-      className={classes.root}
+      sx={classes.root}
       onClose={onClose}
       open={open}
     >
       <EnhancedDialogTitle onClose={onClose}>
         Open Source Notices
       </EnhancedDialogTitle>
-      <DialogContent className={classes.dialogContent}>
+      <DialogContent sx={classes.dialogContent}>
         {content}
       </DialogContent>
     </Dialog>

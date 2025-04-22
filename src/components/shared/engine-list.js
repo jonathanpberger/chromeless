@@ -4,21 +4,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Avatar from '@material-ui/core/Avatar';
-import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import ToggleButton from '@material-ui/lab/ToggleButton';
-import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
-import { withStyles } from '@material-ui/core/styles';
+import Avatar from '@mui/material/Avatar';
+import Grid from '@mui/material/Grid';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
+import ListItemText from '@mui/material/ListItemText';
+import ToggleButton from '@mui/lab/ToggleButton';
+import ToggleButtonGroup from '@mui/lab/ToggleButtonGroup';
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
+import { withStyles } from '@mui/material/styles';
 
-import HelpIcon from '@material-ui/icons/Help';
-import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
+import HelpIcon from '@mui/icons-material/Help';
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 
 import connectComponent from '../../helpers/connect-component';
 
@@ -103,8 +103,8 @@ const EngineList = ({
       }}
       selected={engine.startsWith(engineVal)}
     >
-      <ListItemAvatar className={classes.smallListItemAvatar}>
-        <Avatar alt={engineName} src={iconPath} className={classes.smallAvatar} />
+      <ListItemAvatar sx={classes.smallListItemAvatar}>
+        <Avatar alt={engineName} src={iconPath} sx={classes.smallAvatar} />
       </ListItemAvatar>
       <ListItemText
         primary={(
@@ -129,7 +129,7 @@ const EngineList = ({
                   title="Download Browser"
                 >
                   <CloudDownloadIcon
-                    className={classes.download}
+                    sx={classes.download}
                     fontSize="small"
                     color="disabled"
                     onClick={(e) => {
