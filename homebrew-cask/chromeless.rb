@@ -1,6 +1,6 @@
 cask "chromeless" do
-  version "5.0.0"
-  sha256 :no_check # Replace with actual SHA256 of your DMG file once you have the build
+  version "4.6.0"
+  sha256 "0fc90c25e97ffd84c7e6f2d7af52eb6ca27a4efdfc57dfc4cdce32af3d8fdbae"
 
   url "https://github.com/webcatalog/chromeless/releases/download/v#{version}/Chromeless-#{version}.dmg"
   name "Chromeless"
