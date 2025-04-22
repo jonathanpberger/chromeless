@@ -1,0 +1,99 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install
+      - name: Build app
+        run: yarn dist
+        env:
+          CI_BUILD_TAG: true
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: mac-artifacts
+          path: |
+            dist/*.dmg
+            dist/*.zip
+            dist/*.yml
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install
+      - name: Build app
+        run: yarn dist-dev
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-artifacts
+          path: |
+            dist/*.exe
+            dist/*.zip
+            dist/*.yml
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install
+      - name: Build app
+        run: yarn dist-dev
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-artifacts
+          path: |
+            dist/*.AppImage
+            dist/*.deb
+            dist/*.rpm
+            dist/*.yml
+
+  create-release:
+    needs: [build-mac, build-windows, build-linux]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: artifacts
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          draft: false
+          prerelease: false
+          name: Chromeless ${{ github.ref_name }}
+          body_path: README-UPDATES.md
+          files: |
+            artifacts/mac-artifacts/*
+            artifacts/windows-artifacts/*
+            artifacts/linux-artifacts/*
