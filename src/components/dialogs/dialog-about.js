@@ -11,7 +11,7 @@ import DialogContent from '@mui/material/DialogContent';
 
 import connectComponent from '../../helpers/connect-component';
 
-import { close } from '../../state/dialog-about/actions';
+import { close } from '../../state/dialog-about/slice';
 import { open as openDialogOpenSourceNotices } from '../../state/dialog-open-source-notices/actions';
 import iconPng from '../../assets/products/chromeless-mac-icon-128@2x.png';
 
