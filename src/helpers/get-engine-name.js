@@ -4,13 +4,15 @@
 import engines from '../constants/engines';
 
 const getEngineName = (engineStr) => {
+  if (!engineStr) return '';
+  
   // chromium/tabs
   const engineStrParts = engineStr.split('/');
   const engineVal = engineStrParts[0];
   const tabbedMode = engineStrParts.length > 0 && engineStrParts[1] === 'tabs';
 
   const engineObj = engines[engineVal];
-  if (!engineObj) return 'Unknown Engine';
+  if (!engineObj) return engineVal;
 
   let { engineName } = engineObj;
   if (tabbedMode) engineName += ' (tabbed)';

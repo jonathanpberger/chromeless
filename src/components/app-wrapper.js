@@ -3,11 +3,9 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { ThemeProvider as MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import teal from '@material-ui/core/colors/teal';
-import red from '@material-ui/core/colors/pink';
-import grey from '@material-ui/core/colors/grey';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { teal, pink, grey } from '@mui/material/colors';
 
 import connectComponent from '../helpers/connect-component';
 
@@ -20,32 +18,52 @@ const AppWrapper = ({ shouldUseDarkColors }) => {
       fontSize: 13.5,
     },
     palette: {
-      type: shouldUseDarkColors ? 'dark' : 'light',
+      mode: shouldUseDarkColors ? 'dark' : 'light',
       primary: {
         light: teal[300],
         main: teal[700],
         dark: teal[900],
       },
       secondary: {
-        light: red[300],
-        main: red[500],
-        dark: red[700],
+        light: pink[300],
+        main: pink[500],
+        dark: pink[700],
+      },
+      background: {
+        default: shouldUseDarkColors ? '#121212' : '#fff',
+        paper: shouldUseDarkColors ? '#1e1e1e' : '#fff',
+      },
+    },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            textTransform: 'none',
+          },
+        },
+      },
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            backgroundImage: 'none',
+          },
+        },
       },
     },
   };
 
+  // Add custom background for light mode
   if (!shouldUseDarkColors) {
-    themeObj.background = {
-      primary: grey[200],
-    };
+    themeObj.palette.background.primary = grey[200];
   }
 
-  const theme = createMuiTheme(themeObj);
+  const theme = createTheme(themeObj);
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <App />
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 };
 

@@ -4,9 +4,9 @@
 // External Dependencies
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 
-const connectComponent = (component, mapStateToProps, actionCreators, styles) => {
+const connectComponent = (component, mapStateToProps, actionCreators, stylesFunc) => {
   // Adds `on` to binded action names
   const onActionCreators = {};
   if (actionCreators) {
@@ -16,13 +16,17 @@ const connectComponent = (component, mapStateToProps, actionCreators, styles) =>
     });
   }
 
-  const styledComponent = styles ? withStyles(styles)(component, { name: component.name })
+  // Apply styling with MUI v5's styled API if styles are provided
+  const StyledComponent = stylesFunc
+    ? styled(component, {
+        name: component.displayName || component.name,
+      })(stylesFunc)
     : component;
 
   return connect(
     mapStateToProps,
     (dispatch) => bindActionCreators(onActionCreators, dispatch),
-  )(styledComponent);
+  )(StyledComponent);
 };
 
 export default connectComponent;

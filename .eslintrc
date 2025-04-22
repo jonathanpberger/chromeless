@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "extends": "airbnb",
   "globals": {
     "window": true,
@@ -15,6 +15,9 @@
     "react/forbid-prop-types": [0],
     "import/prefer-default-export": [0],
     "camelcase": [0],
-    "linebreak-style": [0]
+    "linebreak-style": [0],
+    "react/function-component-definition": [0],
+    "react/react-in-jsx-scope": [0],
+    "react/jsx-props-no-spreading": [0]
   }
 }

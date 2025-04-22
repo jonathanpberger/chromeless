@@ -4,13 +4,8 @@
 |---|
 |[![macOS](https://github.com/webcatalog/chromeless/workflows/macOS/badge.svg)](https://github.com/webcatalog/chromeless/actions?query=workflow:%22macOS%22)|
 
-## Deprecation
-**Deprecated:** Chromeless is deprecated legacy software and will no longer receive feature updates. Nevertheless, the app will continue working and receiving maintainance updates.
-
-If you're looking for an alternative, check out **[WebCatalog](https://webcatalog.io/webcatalog/)**.
-
 ## Introduction
-**Chromeless** is a free Mac app which lets you create Chromium-based, Firefox-based or WebKit-based apps (also known as site-specific browsers) from any websites.
+**Chromeless** is a free and modern Mac app which lets you create site-specific browsers from any websites. This app supports modern Chromium-based, Firefox-based or WebKit-based browsers.
 
 ### How It Works
 Chromeless is a free and open-source app for Mac that lets you create a site-specific browser (also known as Chromium-based app, chromeless app, etc) out of any website or web application, effectively turning your favorite web apps into self-contained, distraction-free desktop apps, all powered by your daily web browsers.
@@ -38,7 +33,7 @@ Chromeless also lets you create traditional browser instances (also known as tab
 ---
 
 ## Source Code
-On the other hand, **the source code is freely available** for use, modification and distribution under the permissions, limitations and conditions listed in the [Mozilla Public License 2.0](LICENSE).
+The source code is freely available for use, modification and distribution under the permissions, limitations and conditions listed in the [Mozilla Public License 2.0](LICENSE).
 
 ---
 
@@ -67,3 +62,10 @@ yarn electron-dev
 # Build for production
 yarn dist
 ```
+
+## Technology Stack
+- Electron 28+
+- React 18
+- MUI v5 (Material UI)
+- Redux Toolkit
+- Node.js 18+

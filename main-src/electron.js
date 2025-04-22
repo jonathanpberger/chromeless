@@ -36,6 +36,12 @@ const mainWindow = require('./libs/windows/main');
 
 require('./libs/updater');
 
+// Handle creating/removing shortcuts on Windows when installing/uninstalling
+if (require('electron-squirrel-startup')) {
+  app.quit();
+}
+
+// Ensure single instance of the app
 const gotTheLock = app.requestSingleInstanceLock();
 
 if (!gotTheLock) {
@@ -56,7 +62,7 @@ if (!gotTheLock) {
   loadListeners();
   loadInvokers();
 
-  app.on('ready', () => {
+  app.whenReady().then(() => {
     // https://github.com/electron/electron/issues/23757
     protocol.registerFileProtocol('file', (request, callback) => {
       const pathname = decodeURI(request.url.replace('file:///', ''));
@@ -74,6 +80,7 @@ if (!gotTheLock) {
       themeSource,
     } = getPreferences();
 
+    // Set theme (light, dark, or system)
     nativeTheme.themeSource = themeSource;
 
     mainWindow.createAsync()
@@ -82,8 +89,8 @@ if (!gotTheLock) {
         ipcMain.emit('truly-ready');
 
         const win = mainWindow.get();
-        mainWindow.get().on('focus', () => {
-          win.send('log-focus');
+        win.on('focus', () => {
+          win.webContents.send('log-focus');
         });
       });
 
@@ -94,17 +101,26 @@ if (!gotTheLock) {
     });
 
     autoUpdater.allowPrerelease = allowPrerelease;
+
+    // Open the window if it isn't already open when the app is activated
+    // On macOS it's common to re-create a window in the app when the
+    // dock icon is clicked and there are no other windows open.
+    app.on('activate', () => {
+      if (mainWindow.get() === null) {
+        mainWindow.createAsync();
+      } else {
+        mainWindow.show();
+      }
+    });
   });
 
+  // Quit when all windows are closed, except on macOS. There, it's common
+  // for applications and their menu bar to stay active until the user quits
+  // explicitly with Cmd + Q.
   app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
       app.quit();
     }
-  });
-
-  app.on('activate', () => {
-    app.whenReady()
-      .then(() => mainWindow.show());
   });
 
   app.on('second-instance', () => {
@@ -114,4 +130,6 @@ if (!gotTheLock) {
       win.focus();
     }
   });
+
+  // In this file you can include the rest of your app-specific main process code
 }

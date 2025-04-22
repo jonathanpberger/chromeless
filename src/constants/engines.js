@@ -68,9 +68,9 @@ const engines = {
     disableMultisiteMode: true,
   },
   firefox: {
-    engineName: 'Mozilla Firefox (experimental)',
+    engineName: 'Mozilla Firefox',
     iconPath: firefoxIcon,
-    disableStandardMode: true,
+    disableStandardMode: false, // Firefox support is no longer experimental
     defaultMode: 'tabbed',
     downloadUrl: 'https://www.mozilla.org/firefox/',
   },
@@ -92,17 +92,47 @@ const engines = {
   edgeBeta: {
     engineName: 'Microsoft Edge Beta',
     iconPath: edgeBetaIcon,
-    downloadUrl: 'https://www.microsoftedgeinsider.com/download',
+    downloadUrl: 'https://www.microsoft.com/edge/download/insider',
   },
   edgeDev: {
     engineName: 'Microsoft Edge Dev',
     iconPath: edgeDevIcon,
-    downloadUrl: 'https://www.microsoftedgeinsider.com/download',
+    downloadUrl: 'https://www.microsoft.com/edge/download/insider',
   },
   edgeCanary: {
     engineName: 'Microsoft Edge Canary',
     iconPath: edgeCanaryIcon,
-    downloadUrl: 'https://www.microsoftedgeinsider.com/download',
+    downloadUrl: 'https://www.microsoft.com/edge/download/insider',
+  },
+  // Added browser engines:
+  firefoxDeveloperEdition: {
+    engineName: 'Firefox Developer Edition',
+    iconPath: firefoxIcon, // Reusing Firefox icon for now
+    downloadUrl: 'https://www.mozilla.org/firefox/developer/',
+  },
+  firefoxNightly: {
+    engineName: 'Firefox Nightly',
+    iconPath: firefoxIcon, // Reusing Firefox icon for now
+    downloadUrl: 'https://www.mozilla.org/firefox/nightly/',
+  },
+  operaGX: {
+    engineName: 'Opera GX',
+    iconPath: operaIcon, // Reusing Opera icon for now
+    disableStandardMode: true,
+    defaultMode: 'tabbed',
+    downloadUrl: 'https://www.opera.com/gx',
+  },
+  operaOne: {
+    engineName: 'Opera One',
+    iconPath: operaIcon, // Reusing Opera icon for now
+    disableStandardMode: true,
+    defaultMode: 'tabbed',
+    downloadUrl: 'https://www.opera.com/one',
+  },
+  arc: {
+    engineName: 'Arc Browser',
+    iconPath: chromiumIcon, // Using Chromium icon as a fallback
+    downloadUrl: 'https://arc.net/',
   },
 };
 

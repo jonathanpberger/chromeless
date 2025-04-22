@@ -20,7 +20,6 @@ const getForkedScriptsConfig = () => {
   return {
     mode: 'production',
     node: {
-      global: false,
       __filename: false,
       __dirname: false,
     },
@@ -45,7 +44,6 @@ const getPreloadScriptsConfig = () => {
   return {
     mode: 'production',
     node: {
-      global: false,
       __filename: false,
       __dirname: false,
     },
@@ -71,18 +69,18 @@ const getElectronMainConfig = () => {
     }),
   ];
 
-  const patterns = [
-    {
-      from: path.join(__dirname, 'main-src', 'images'),
-      to: path.join(__dirname, 'build', 'images'),
-    },
-  ];
-  plugins.push(new CopyPlugin({ patterns }));
+  plugins.push(new CopyPlugin({
+    patterns: [
+      {
+        from: path.join(__dirname, 'main-src', 'images'),
+        to: path.join(__dirname, 'build', 'images'),
+      },
+    ],
+  }));
 
   return {
     mode: 'production',
     node: {
-      global: false,
       __filename: false,
       __dirname: false,
     },
