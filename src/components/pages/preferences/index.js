@@ -5,25 +5,25 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import Divider from '@material-ui/core/Divider';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import MenuItem from '@material-ui/core/MenuItem';
-import Paper from '@material-ui/core/Paper';
-import Select from '@material-ui/core/Select';
-import Switch from '@material-ui/core/Switch';
-import Typography from '@material-ui/core/Typography';
+import Divider from '@mui/material/Divider';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
+import ListItemText from '@mui/material/ListItemText';
+import MenuItem from '@mui/material/MenuItem';
+import Paper from '@mui/material/Paper';
+import Select from '@mui/material/Select';
+import Switch from '@mui/material/Switch';
+import Typography from '@mui/material/Typography';
 
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import PowerIcon from '@material-ui/icons/Power';
-import RotateLeftIcon from '@material-ui/icons/RotateLeft';
-import StorefrontIcon from '@material-ui/icons/Storefront';
-import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt';
-import WidgetsIcon from '@material-ui/icons/Widgets';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import PowerIcon from '@mui/icons-material/Power';
+import RotateLeftIcon from '@mui/icons-material/RotateLeft';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import SystemUpdateAltIcon from '@mui/icons-material/SystemUpdateAlt';
+import WidgetsIcon from '@mui/icons-material/Widgets';
 
 import connectComponent from '../../../helpers/connect-component';
 import getEngineName from '../../../helpers/get-engine-name';
@@ -222,10 +222,10 @@ const Preferences = ({
   };
 
   return (
-    <div className={classes.root}>
+    <div sx={classes.root}>
       <DefinedAppBar />
-      <div className={classes.scrollContainer}>
-        <div className={classes.sidebar}>
+      <div sx={classes.scrollContainer}>
+        <div sx={classes.sidebar}>
           <List dense>
             {Object.keys(sections).map((sectionKey, i) => {
               const {
@@ -248,11 +248,11 @@ const Preferences = ({
             })}
           </List>
         </div>
-        <div className={classes.inner}>
-          <Typography variant="subtitle2" color="textPrimary" className={classes.sectionTitle} ref={sections.general.ref}>
+        <div sx={classes.inner}>
+          <Typography variant="subtitle2" color="textPrimary" sx={classes.sectionTitle} ref={sections.general.ref}>
             General
           </Typography>
-          <Paper elevation={0} className={classes.paper}>
+          <Paper elevation={0} sx={classes.paper}>
             <List disablePadding dense>
               <ListItem>
                 <ListItemText primary="Theme" />
@@ -353,10 +353,10 @@ const Preferences = ({
             </List>
           </Paper>
 
-          <Typography variant="subtitle2" color="textPrimary" className={classes.sectionTitle} ref={sections.advanced.ref}>
+          <Typography variant="subtitle2" color="textPrimary" sx={classes.sectionTitle} ref={sections.advanced.ref}>
             Advanced
           </Typography>
-          <Paper elevation={0} className={classes.paper}>
+          <Paper elevation={0} sx={classes.paper}>
             <List disablePadding dense>
               <ListItem
                 button
@@ -458,10 +458,10 @@ const Preferences = ({
             </List>
           </Paper>
 
-          <Typography variant="subtitle2" color="textPrimary" className={classes.sectionTitle} ref={sections.updates.ref}>
+          <Typography variant="subtitle2" color="textPrimary" sx={classes.sectionTitle} ref={sections.updates.ref}>
             Updates
           </Typography>
-          <Paper elevation={0} className={classes.paper}>
+          <Paper elevation={0} sx={classes.paper}>
             <List disablePadding dense>
               <ListItem
                 button
@@ -497,10 +497,10 @@ const Preferences = ({
             </List>
           </Paper>
 
-          <Typography variant="subtitle2" color="textPrimary" className={classes.sectionTitle} ref={sections.reset.ref}>
+          <Typography variant="subtitle2" color="textPrimary" sx={classes.sectionTitle} ref={sections.reset.ref}>
             Reset
           </Typography>
-          <Paper elevation={0} className={classes.paper}>
+          <Paper elevation={0} sx={classes.paper}>
             <List disablePadding dense>
               <ListItem
                 button
@@ -526,23 +526,23 @@ const Preferences = ({
             </List>
           </Paper>
 
-          <Typography variant="subtitle2" color="textPrimary" className={classes.sectionTitle} ref={sections.moreApps.ref}>
+          <Typography variant="subtitle2" color="textPrimary" sx={classes.sectionTitle} ref={sections.moreApps.ref}>
             More Apps
           </Typography>
-          <Paper elevation={0} className={classes.paper}>
+          <Paper elevation={0} sx={classes.paper}>
             <List disablePadding dense>
               <ListItem
                 button
                 onClick={() => requestOpenInBrowser(`https://webcatalog.io/webcatalog/?utm_source=${utmSource}`)}
-                className={classes.listItemPromotion}
+                sx={classes.listItemPromotion}
               >
-                <div className={classes.promotionBlock}>
-                  <div className={classes.promotionLeft}>
-                    <img src={webcatalogIconPng} alt="WebCatalog" className={classes.appIcon} />
+                <div sx={classes.promotionBlock}>
+                  <div sx={classes.promotionLeft}>
+                    <img src={webcatalogIconPng} alt="WebCatalog" sx={classes.appIcon} />
                   </div>
-                  <div className={classes.promotionRight}>
+                  <div sx={classes.promotionRight}>
                     <div>
-                      <Typography variant="body1" className={classes.appTitle}>
+                      <Typography variant="body1" sx={classes.appTitle}>
                         WebCatalog
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
@@ -557,15 +557,15 @@ const Preferences = ({
               <ListItem
                 button
                 onClick={() => requestOpenInBrowser(`https://translatium.app?utm_source=${utmSource}`)}
-                className={classes.listItemPromotion}
+                sx={classes.listItemPromotion}
               >
-                <div className={classes.promotionBlock}>
-                  <div className={classes.promotionLeft}>
-                    <img src={translatiumIconPng} alt="Translatium" className={classes.appIcon} />
+                <div sx={classes.promotionBlock}>
+                  <div sx={classes.promotionLeft}>
+                    <img src={translatiumIconPng} alt="Translatium" sx={classes.appIcon} />
                   </div>
-                  <div className={classes.promotionRight}>
+                  <div sx={classes.promotionRight}>
                     <div>
-                      <Typography variant="body1" className={classes.appTitle}>
+                      <Typography variant="body1" sx={classes.appTitle}>
                         Translatium
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
@@ -580,15 +580,15 @@ const Preferences = ({
               <ListItem
                 button
                 onClick={() => requestOpenInBrowser(`https://webcatalog.io/switchbar/?utm_source=${utmSource}`)}
-                className={classes.listItemPromotion}
+                sx={classes.listItemPromotion}
               >
-                <div className={classes.promotionBlock}>
-                  <div className={classes.promotionLeft}>
-                    <img src={switchbarIconPng} alt="Switchbar" className={classes.appIcon} />
+                <div sx={classes.promotionBlock}>
+                  <div sx={classes.promotionLeft}>
+                    <img src={switchbarIconPng} alt="Switchbar" sx={classes.appIcon} />
                   </div>
-                  <div className={classes.promotionRight}>
+                  <div sx={classes.promotionRight}>
                     <div>
-                      <Typography variant="body1" className={classes.appTitle}>
+                      <Typography variant="body1" sx={classes.appTitle}>
                         Switchbar
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
@@ -603,15 +603,15 @@ const Preferences = ({
               <ListItem
                 button
                 onClick={() => requestOpenInBrowser(`https://webcatalog.io/singlebox/?utm_source=${utmSource}`)}
-                className={classes.listItemPromotion}
+                sx={classes.listItemPromotion}
               >
-                <div className={classes.promotionBlock}>
-                  <div className={classes.promotionLeft}>
-                    <img src={singleboxIconPng} alt="Singlebox" className={classes.appIcon} />
+                <div sx={classes.promotionBlock}>
+                  <div sx={classes.promotionLeft}>
+                    <img src={singleboxIconPng} alt="Singlebox" sx={classes.appIcon} />
                   </div>
-                  <div className={classes.promotionRight}>
+                  <div sx={classes.promotionRight}>
                     <div>
-                      <Typography variant="body1" className={classes.appTitle}>
+                      <Typography variant="body1" sx={classes.appTitle}>
                         Singlebox
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
@@ -629,15 +629,15 @@ const Preferences = ({
                   const url = `https://webcatalog.io/clovery/?utm_source=${utmSource}`;
                   requestOpenInBrowser(url);
                 }}
-                className={classes.listItemPromotion}
+                sx={classes.listItemPromotion}
               >
-                <div className={classes.promotionBlock}>
-                  <div className={classes.promotionLeft}>
-                    <img src={cloveryIconPng} alt="Clovery" className={classes.appIcon} />
+                <div sx={classes.promotionBlock}>
+                  <div sx={classes.promotionLeft}>
+                    <img src={cloveryIconPng} alt="Clovery" sx={classes.appIcon} />
                   </div>
-                  <div className={classes.promotionRight}>
+                  <div sx={classes.promotionRight}>
                     <div>
-                      <Typography variant="body1" className={classes.appTitle}>
+                      <Typography variant="body1" sx={classes.appTitle}>
                         Clovery
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
@@ -651,10 +651,10 @@ const Preferences = ({
             </List>
           </Paper>
 
-          <Typography variant="subtitle2" color="textPrimary" className={classes.sectionTitle} ref={sections.miscs.ref}>
+          <Typography variant="subtitle2" color="textPrimary" sx={classes.sectionTitle} ref={sections.miscs.ref}>
             Miscellaneous
           </Typography>
-          <Paper elevation={0} className={classes.paper}>
+          <Paper elevation={0} sx={classes.paper}>
             <List disablePadding dense>
               <ListItem button onClick={onOpenDialogAbout}>
                 <ListItemText primary="About" />

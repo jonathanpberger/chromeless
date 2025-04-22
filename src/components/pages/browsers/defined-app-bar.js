@@ -22,7 +22,7 @@ const DefinedAppBar = ({
 }) => (
   <EnhancedAppBar
     center={(
-      <div className={classes.centerContainer}>
+      <div sx={classes.centerContainer}>
         Browser Instances
       </div>
     )}

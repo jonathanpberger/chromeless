@@ -11,11 +11,11 @@ import {
 } from '@elastic/react-search-ui';
 import '@elastic/react-search-ui-views/lib/styles/styles.css';
 
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
 
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from '@mui/icons-material/Search';
 
 import connectComponent from '../../../helpers/connect-component';
 
@@ -73,7 +73,7 @@ const Home = ({
   if (!connector) {
     return (
       <div
-        className={classes.badConfigRoot}
+        sx={classes.badConfigRoot}
       >
         <Typography
           variant="body1"
@@ -120,11 +120,11 @@ const Home = ({
         },
       }}
     >
-      <div className={classes.root}>
+      <div sx={classes.root}>
         <DefinedAppBar />
         <SecondaryToolbar />
         <Divider />
-        <div className={classes.scrollContainer}>
+        <div sx={classes.scrollContainer}>
           <Grid container>
             <Grid item xs container spacing={1} justify="space-evenly">
               <WithSearch
@@ -154,7 +154,7 @@ const Home = ({
                 }) => {
                   if (error) {
                     return (
-                      <div className={classes.noConnectionContainer}>
+                      <div sx={classes.noConnectionContainer}>
                         <NoConnection
                           onTryAgainButtonClick={() => {
                             setSearchTerm(searchTerm, { refresh: true, debounce: 0 });
@@ -171,7 +171,7 @@ const Home = ({
                           variant="body2"
                           align="center"
                           color="textSecondary"
-                          className={classes.loading}
+                          sx={classes.loading}
                         >
                           Loading...
                         </Typography>
@@ -188,7 +188,7 @@ const Home = ({
                         >
                           Your query did not match any apps in our database.
                         </Typography>
-                        <Grid container justify="center" spacing={1} className={classes.noMatchingResultOpts}>
+                        <Grid container justify="center" spacing={1} sx={classes.noMatchingResultOpts}>
                           <CreateCustomAppCard />
                         </Grid>
                       </EmptyState>

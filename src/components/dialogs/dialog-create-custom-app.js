@@ -5,13 +5,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 import connectComponent from '../../helpers/connect-component';
 import isUrl from '../../helpers/is-url';
@@ -120,10 +120,10 @@ const DialogCreateCustomApp = (props) => {
             variant="outlined"
           />
         )}
-        <Grid container spacing={1} className={classes.grid}>
+        <Grid container spacing={1} sx={classes.grid}>
           <Grid item xs={12} sm="auto">
-            <div className={classes.iconContainer}>
-              <img src={iconPath} alt={name} className={classes.icon} />
+            <div sx={classes.iconContainer}>
+              <img src={iconPath} alt={name} sx={classes.icon} />
             </div>
           </Grid>
           <Grid item xs={12} sm="auto">
@@ -148,13 +148,13 @@ const DialogCreateCustomApp = (props) => {
             >
               Select Local Image...
             </Button>
-            <Typography variant="caption" className={classes.caption}>
+            <Typography variant="caption" sx={classes.caption}>
               PNG, JPEG, GIF, TIFF or BMP.
             </Typography>
             <Button
               variant="outlined"
               size="small"
-              className={classes.buttonBot}
+              sx={classes.buttonBot}
               disabled={Boolean(!url || urlError || urlDisabled || downloadingIcon)}
               onClick={() => onGetIconFromInternet()}
             >
@@ -164,7 +164,7 @@ const DialogCreateCustomApp = (props) => {
             <Button
               variant="outlined"
               size="small"
-              className={classes.buttonBot}
+              sx={classes.buttonBot}
               disabled={Boolean(!url || urlError || urlDisabled || downloadingIcon)}
               onClick={() => onGetIconFromAppSearch()}
             >
@@ -174,7 +174,7 @@ const DialogCreateCustomApp = (props) => {
             <Button
               variant="outlined"
               size="small"
-              className={classes.buttonBot}
+              sx={classes.buttonBot}
               disabled={!(icon || internetIcon) || downloadingIcon}
               onClick={() => onUpdateForm({ icon: null, internetIcon: null })}
             >
@@ -183,7 +183,7 @@ const DialogCreateCustomApp = (props) => {
           </Grid>
         </Grid>
       </DialogContent>
-      <DialogActions className={classes.dialogActions}>
+      <DialogActions sx={classes.dialogActions}>
         <Button
           onClick={onClose}
         >

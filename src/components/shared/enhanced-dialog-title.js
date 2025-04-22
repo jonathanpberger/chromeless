@@ -4,10 +4,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
-import Typography from '@material-ui/core/Typography';
+import DialogTitle from '@mui/material/DialogTitle';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import Typography from '@mui/material/Typography';
 
 import connectComponent from '../../helpers/connect-component';
 
@@ -19,6 +19,7 @@ const styles = (theme) => ({
     paddingRight: theme.spacing(2),
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
+    position: 'relative',
   },
   subtitle1: {
     // https://stackoverflow.com/questions/19347988/make-empty-div-of-one-line-height
@@ -40,16 +41,21 @@ const EnhancedDialogTitle = ({
   disableTypography,
   onClose,
 }) => (
-  <MuiDialogTitle disableTypography className={classes.root}>
+  <DialogTitle sx={classes.root}>
     {disableTypography ? children : (
-      <Typography variant="subtitle1" className={classes.subtitle1}>{children}</Typography>
+      <Typography variant="subtitle1" sx={classes.subtitle1}>{children}</Typography>
     )}
     {onClose ? (
-      <IconButton size="small" aria-label="Close" className={classes.closeButton} onClick={onClose}>
+      <IconButton
+        size="small"
+        aria-label="Close"
+        sx={classes.closeButton}
+        onClick={onClose}
+      >
         <CloseIcon fontSize="small" />
       </IconButton>
     ) : null}
-  </MuiDialogTitle>
+  </DialogTitle>
 );
 
 EnhancedDialogTitle.defaultProps = {

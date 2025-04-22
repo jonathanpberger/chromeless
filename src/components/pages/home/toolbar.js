@@ -6,12 +6,12 @@ import PropTypes from 'prop-types';
 
 import { WithSearch } from '@elastic/react-search-ui';
 
-import Tooltip from '@material-ui/core/Tooltip';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 
-import SortIcon from '@material-ui/icons/Sort';
-import RefreshIcon from '@material-ui/icons/Refresh';
+import SortIcon from '@mui/icons-material/Sort';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 import connectComponent from '../../../helpers/connect-component';
 
@@ -77,15 +77,15 @@ const Toolbar = ({
       searchTerm,
       setSearchTerm,
     }) => (
-      <div className={classes.root}>
-        <div className={classes.left}>
+      <div sx={classes.root}>
+        <div sx={classes.left}>
           {isLoading && results.length > 0 && (
-            <Typography variant="body2" color="textSecondary" className={classes.statusText}>
+            <Typography variant="body2" color="textSecondary" sx={classes.statusText}>
               Loading...
             </Typography>
           )}
         </div>
-        <div className={classes.right}>
+        <div sx={classes.right}>
           <Tooltip title="Refresh">
             <IconButton
               size="small"

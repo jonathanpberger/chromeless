@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 
 import connectComponent from '../../../helpers/connect-component';
 
@@ -26,7 +26,7 @@ const DefinedAppBar = ({
 }) => (
   <EnhancedAppBar
     center={(
-      <Typography variant="body1" className={classes.title}>
+      <Typography variant="body1" sx={classes.title}>
         Preferences
       </Typography>
     )}

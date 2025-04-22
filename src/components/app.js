@@ -1,7 +1,7 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import connectComponent from '../helpers/connect-component';
@@ -32,7 +32,7 @@ import {
   requestCheckForUpdates,
 } from '../senders';
 
-import { fetchLatestTemplateVersionAsync } from '../state/general/actions';
+import { fetchLatestTemplateVersionAsync } from '../state/general/slice';
 
 const styles = (theme) => ({
   root: {
@@ -53,64 +53,69 @@ const styles = (theme) => ({
   },
 });
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.updaterTimer = null;
-  }
+const App = (props) => {
+  const {
+    classes,
+    route,
+    onFetchLatestTemplateVersionAsync,
+  } = props;
+  
+  const updaterTimerRef = useRef(null);
 
-  componentDidMount() {
+  useEffect(() => {
+    // Initial setup on mount
     requestCheckForUpdates(true); // isSilent = true
     requestGetInstalledApps();
-
-    const { onFetchLatestTemplateVersionAsync } = this.props;
     onFetchLatestTemplateVersionAsync();
-    this.updaterTimer = setTimeout(() => {
+    
+    // Set up interval for checking updates
+    updaterTimerRef.current = setInterval(() => {
       onFetchLatestTemplateVersionAsync();
     }, 15 * 60 * 1000); // recheck every 15 minutes
+    
+    // Cleanup on unmount
+    return () => {
+      if (updaterTimerRef.current) {
+        clearInterval(updaterTimerRef.current);
+      }
+    };
+  }, [onFetchLatestTemplateVersionAsync]);
+
+  // Determine which page to show based on current route
+  let pageContent;
+  switch (route) {
+    case ROUTE_PREFERENCES:
+      pageContent = <Preferences key="preferences" />;
+      break;
+    case ROUTE_INSTALLED:
+      pageContent = <Installed key="installed" />;
+      break;
+    case ROUTE_BROWSERS:
+      pageContent = <Browsers key="browsers" />;
+      break;
+    default:
+      pageContent = <Home key="home" />;
   }
 
-  componentWillUnmount() {
-    clearTimeout(this.updaterTimer);
-  }
-
-  render() {
-    const { classes, route } = this.props;
-    let pageContent;
-    switch (route) {
-      case ROUTE_PREFERENCES:
-        pageContent = <Preferences key="preferences" />;
-        break;
-      case ROUTE_INSTALLED:
-        pageContent = <Installed key="installed" />;
-        break;
-      case ROUTE_BROWSERS:
-        pageContent = <Browsers key="browsers" />;
-        break;
-      default:
-        pageContent = <Home key="home" />;
-    }
-
-    return (
-      <div className={classes.root}>
-        <div className={classes.content}>
-          {pageContent}
-        </div>
-        <EnhancedBottomNavigation />
-
-        <SnackbarTrigger />
-
-        <DialogAbout />
-        <DialogChooseEngine />
-        <DialogCreateCustomApp />
-        <DialogEditApp />
-        <DialogOpenSourceNotices />
-        <DialogSetInstallationPath />
-        <DialogSetPreferredEngine />
+  return (
+    <div sx={classes.root}>
+      <div sx={classes.content}>
+        {pageContent}
       </div>
-    );
-  }
-}
+      <EnhancedBottomNavigation />
+
+      <SnackbarTrigger />
+
+      <DialogAbout />
+      <DialogChooseEngine />
+      <DialogCreateCustomApp />
+      <DialogEditApp />
+      <DialogOpenSourceNotices />
+      <DialogSetInstallationPath />
+      <DialogSetPreferredEngine />
+    </div>
+  );
+};
 
 App.propTypes = {
   classes: PropTypes.object.isRequired,

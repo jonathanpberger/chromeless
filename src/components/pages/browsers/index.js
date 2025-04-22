@@ -5,8 +5,8 @@ import React, { useEffect, useState, useRef } from 'react';
 
 import PropTypes from 'prop-types';
 
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Divider from '@material-ui/core/Divider';
+import CircularProgress from '@mui/material/CircularProgress';
+import Divider from '@mui/material/Divider';
 
 import { FixedSizeGrid } from 'react-window';
 
@@ -85,7 +85,7 @@ const Installed = ({
   const renderContent = () => {
     if (scanning) {
       return (
-        <div className={classes.centeringCircularProgress}>
+        <div sx={classes.centeringCircularProgress}>
           <CircularProgress size={28} />
         </div>
       );
@@ -106,7 +106,7 @@ const Installed = ({
 
       if (index === 0) {
         return (
-          <div className={classes.cardContainer} style={style}>
+          <div sx={classes.cardContainer} style={style}>
             <CreateCustomAppCard />
           </div>
         );
@@ -114,7 +114,7 @@ const Installed = ({
 
       const appId = appIds[index - 1];
       return (
-        <div className={classes.cardContainer} style={style}>
+        <div sx={classes.cardContainer} style={style}>
           <AppCard
             key={appId}
             id={appId}
@@ -138,7 +138,7 @@ const Installed = ({
         width={innerWidth}
         initialScrollTop={scrollOffset}
         outerRef={gridRef}
-        className={classes.fixedSizeGrid}
+        sx={classes.fixedSizeGrid}
       >
         {Cell}
       </FixedSizeGrid>
@@ -146,9 +146,9 @@ const Installed = ({
   };
 
   return (
-    <div className={classes.root}>
+    <div sx={classes.root}>
       <DefinedAppBar />
-      <div className={classes.scrollContainer}>
+      <div sx={classes.scrollContainer}>
         <Toolbar />
         <Divider />
         {renderContent()}

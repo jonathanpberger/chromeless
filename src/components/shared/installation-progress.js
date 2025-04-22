@@ -4,8 +4,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Tooltip from '@material-ui/core/Tooltip';
+import CircularProgress from '@mui/material/CircularProgress';
+import Tooltip from '@mui/material/Tooltip';
 
 import connectComponent from '../../helpers/connect-component';
 
@@ -45,7 +45,7 @@ const AppCard = ({
   progressDesc,
   progressPercent,
 }) => (
-  <div className={classes.root}>
+  <div sx={classes.root}>
     <Tooltip
       title={progressDesc || defaultDesc}
       aria-label={progressDesc || defaultDesc}
@@ -57,7 +57,7 @@ const AppCard = ({
       <CircularProgress
         variant="determinate"
         value={progressPercent}
-        className={classes.top}
+        sx={classes.top}
         size={28}
         thickness={4}
       />
@@ -65,7 +65,7 @@ const AppCard = ({
     <CircularProgress
       variant="determinate"
       value={100}
-      className={classes.bottom}
+      sx={classes.bottom}
       size={28}
       thickness={4}
     />

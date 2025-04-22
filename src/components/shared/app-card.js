@@ -224,7 +224,7 @@ const AppCard = (props) => {
       return (
         <div>
           <Button
-            className={classes.actionButton}
+            sx={classes.actionButton}
             size="medium"
             variant="text"
             disableElevation
@@ -237,7 +237,7 @@ const AppCard = (props) => {
           </Button>
           {isOutdated && (
             <Button
-              className={classes.actionButton}
+              sx={classes.actionButton}
               color="primary"
               size="medium"
               variant="text"
@@ -252,7 +252,7 @@ const AppCard = (props) => {
           )}
           {!isOutdated && (
             <Button
-              className={classes.actionButton}
+              sx={classes.actionButton}
               color="secondary"
               variant="text"
               size="medium"
@@ -291,7 +291,7 @@ const AppCard = (props) => {
 
     return (
       <Button
-        className={classes.actionButton}
+        sx={classes.actionButton}
         color="primary"
         size="medium"
         variant="text"
@@ -311,29 +311,29 @@ const AppCard = (props) => {
     <Grid item>
       <Paper
         elevation={0}
-        className={classes.card}
+        sx={classes.card}
         onContextMenu={() => {
           showMenu();
         }}
       >
         <img
           alt={name}
-          className={classes.paperIcon}
+          sx={classes.paperIcon}
           src={iconThumbnail || (isUrl(icon) ? icon : `file://${icon}`)}
         />
         <Typography
-          className={classes.appName}
+          sx={classes.appName}
           title={name}
           variant="subtitle2"
         >
           {name}
         </Typography>
-        <div className={classes.actionContainer}>
+        <div sx={classes.actionContainer}>
           {renderActionsElement()}
         </div>
         {engineIcon && (
           <Tooltip title={`Powered by ${engineName}${version ? ` (script v${version})` : ''}`}>
-            <img src={engineIcon} alt={engineName} className={classes.topLeft} />
+            <img src={engineIcon} alt={engineName} sx={classes.topLeft} />
           </Tooltip>
         )}
         <IconButton
