@@ -19,4 +19,16 @@ describe('getEngineName', () => {
     expect(getEngineName(null)).toBe('');
     expect(getEngineName(undefined)).toBe('');
   });
+
+  it('appends (tabbed) to engine name for tabbed mode', () => {
+    expect(getEngineName('chrome/tabs')).toBe('Google Chrome (tabbed)');
+    expect(getEngineName('firefox/tabs')).toBe('Mozilla Firefox (tabbed)');
+  });
+
+  it('handles modern browser engines', () => {
+    expect(getEngineName('arc')).toBe('Arc Browser');
+    expect(getEngineName('operaGX')).toBe('Opera GX');
+    expect(getEngineName('operaOne')).toBe('Opera One');
+    expect(getEngineName('firefoxDeveloperEdition')).toBe('Firefox Developer Edition');
+  });
 });
