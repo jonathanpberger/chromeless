@@ -6,7 +6,7 @@
 # 07bf2813a1e19f9018225843ed123cf18c2c7f89d7b40460645519e4904e46cd
 #
 # For the full Chromeless application DMG (184 MB):
-# 33953ed2c12c89772144ceaada9377ca5bb9ad08fcc33870e850ad132d4f5319
+# 42179bdfa67d80b1a4843a599a1e3fa0fd7427f9bf90038c82c8f6f72175c946
 
 # Clone the homebrew tap repository (if needed)
 cd ~/workspace
