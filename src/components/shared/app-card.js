@@ -108,7 +108,7 @@ const styles = (theme) => ({
   },
 });
 
-const AppCard = (props) => {
+const AppCard = React.memo((props) => {
   const {
     cancelable,
     category,
@@ -410,9 +410,22 @@ const actionCreators = {
   updateApp,
 };
 
-export default connectComponent(
-  AppCard,
-  mapStateToProps,
-  actionCreators,
-  styles,
+// Use memoization to prevent unnecessary re-renders
+const MemoizedAppCard = React.memo(
+  connectComponent(
+    AppCard,
+    mapStateToProps,
+    actionCreators,
+    styles,
+  ),
+  (prevProps, nextProps) => {
+    // Only re-render if these props change
+    return prevProps.id === nextProps.id
+      && prevProps.status === nextProps.status
+      && prevProps.isOutdated === nextProps.isOutdated
+      && prevProps.name === nextProps.name
+      && prevProps.version === nextProps.version;
+  },
 );
+
+export default MemoizedAppCard;

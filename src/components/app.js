@@ -1,10 +1,11 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import connectComponent from '../helpers/connect-component';
+import useKeyboardShortcuts from '../helpers/use-keyboard-shortcuts';
 
 import EnhancedBottomNavigation from './root/enhanced-bottom-navigation';
 import SnackbarTrigger from './root/snackbar-trigger';
@@ -33,6 +34,8 @@ import {
 } from '../senders';
 
 import { fetchLatestTemplateVersionAsync } from '../state/general/slice';
+import { changeRoute } from '../state/router/slice';
+import { open as openDialogAbout } from '../state/dialog-about/slice';
 
 const styles = (theme) => ({
   root: {
@@ -58,6 +61,8 @@ const App = (props) => {
     classes,
     route,
     onFetchLatestTemplateVersionAsync,
+    onChangeRoute,
+    onOpenDialogAbout,
   } = props;
   
   const updaterTimerRef = useRef(null);
@@ -80,6 +85,40 @@ const App = (props) => {
       }
     };
   }, [onFetchLatestTemplateVersionAsync]);
+
+  // Set up keyboard shortcuts
+  const shortcuts = [
+    {
+      key: ',', // Command/Ctrl + , = Preferences
+      meta: true,
+      action: useCallback(() => onChangeRoute(ROUTE_PREFERENCES), [onChangeRoute]),
+    },
+    {
+      key: 'h', // Command/Ctrl + H = Home
+      meta: true,
+      action: useCallback(() => onChangeRoute(ROUTE_BROWSERS), [onChangeRoute]),
+    },
+    {
+      key: 'i', // Command/Ctrl + I = Installed
+      meta: true,
+      action: useCallback(() => onChangeRoute(ROUTE_INSTALLED), [onChangeRoute]),
+    },
+    {
+      key: 'r', // Command/Ctrl + R = Refresh
+      meta: true,
+      action: useCallback(() => {
+        requestGetInstalledApps();
+        onFetchLatestTemplateVersionAsync();
+      }, [onFetchLatestTemplateVersionAsync]),
+    },
+    {
+      key: 'a', // Command/Ctrl + A = About
+      meta: true,
+      action: useCallback(() => onOpenDialogAbout(), [onOpenDialogAbout]),
+    },
+  ];
+  
+  useKeyboardShortcuts(shortcuts);
 
   // Determine which page to show based on current route
   let pageContent;
@@ -121,6 +160,8 @@ App.propTypes = {
   classes: PropTypes.object.isRequired,
   route: PropTypes.string.isRequired,
   onFetchLatestTemplateVersionAsync: PropTypes.func.isRequired,
+  onChangeRoute: PropTypes.func.isRequired,
+  onOpenDialogAbout: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -130,6 +171,8 @@ const mapStateToProps = (state) => ({
 
 const actionCreators = {
   fetchLatestTemplateVersionAsync,
+  changeRoute,
+  openDialogAbout,
 };
 
 export default connectComponent(
