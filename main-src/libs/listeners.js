@@ -58,6 +58,16 @@ const loadListeners = () => {
   });
 
   // Preferences
+  // Convert synchronous calls to async (handle)
+  ipcMain.handle('get-preference-async', (e, name) => {
+    return getPreference(name);
+  });
+
+  ipcMain.handle('get-preferences-async', () => {
+    return getPreferences();
+  });
+  
+  // Keep legacy sync methods for backward compatibility
   ipcMain.on('get-preference', (e, name) => {
     const val = getPreference(name);
     e.returnValue = val;
@@ -73,6 +83,16 @@ const loadListeners = () => {
   });
 
   // System Preferences
+  // Convert synchronous calls to async (handle)
+  ipcMain.handle('get-system-preference-async', (e, name) => {
+    return getSystemPreference(name);
+  });
+
+  ipcMain.handle('get-system-preferences-async', () => {
+    return getSystemPreferences();
+  });
+  
+  // Keep legacy sync methods for backward compatibility
   ipcMain.on('get-system-preference', (e, name) => {
     const val = getSystemPreference(name);
     e.returnValue = val;
@@ -323,6 +343,12 @@ const loadListeners = () => {
   });
 
   // Native Theme
+  // Convert to async method
+  ipcMain.handle('get-should-use-dark-colors-async', () => {
+    return nativeTheme.shouldUseDarkColors;
+  });
+  
+  // Keep legacy sync method for backward compatibility
   ipcMain.on('get-should-use-dark-colors', (e) => {
     e.returnValue = nativeTheme.shouldUseDarkColors;
   });

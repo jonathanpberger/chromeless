@@ -48,20 +48,46 @@ export const requestRestart = () => {
 };
 
 // Preferences
-// Note: sendSync is typically not exposed via contextBridge for security reasons
-// These would need to be converted to async methods in a proper implementation
-export const getPreference = (name) => {
+// New async versions using invoke
+export const getPreferenceAsync = async (name) => {
   if (ensureIpcRenderer()) {
-    // Would need to be changed to an async pattern in real implementation
-    return ipcRenderer.send('get-preference', name);
+    try {
+      return await ipcRenderer.invoke('get-preference-async', name);
+    } catch (error) {
+      console.error('Error getting preference:', error);
+      return null;
+    }
+  }
+  return null;
+};
+
+export const getPreferencesAsync = async () => {
+  if (ensureIpcRenderer()) {
+    try {
+      return await ipcRenderer.invoke('get-preferences-async');
+    } catch (error) {
+      console.error('Error getting preferences:', error);
+      return null;
+    }
+  }
+  return null;
+};
+
+// Legacy sync versions (to be deprecated)
+export const getPreference = (name) => {
+  console.warn('getPreference is deprecated. Use getPreferenceAsync instead.');
+  if (ensureIpcRenderer()) {
+    // Not properly working with contextBridge, use async version instead
+    return null;
   }
   return null;
 };
 
 export const getPreferences = () => {
+  console.warn('getPreferences is deprecated. Use getPreferencesAsync instead.');
   if (ensureIpcRenderer()) {
-    // Would need to be changed to an async pattern in real implementation
-    return ipcRenderer.send('get-preferences');
+    // Not properly working with contextBridge, use async version instead
+    return null;
   }
   return null;
 };
@@ -79,18 +105,46 @@ export const requestOpenInstallLocation = () => {
 };
 
 // System Preferences
-export const getSystemPreference = (name) => {
+// New async versions using invoke
+export const getSystemPreferenceAsync = async (name) => {
   if (ensureIpcRenderer()) {
-    // Would need to be changed to an async pattern in real implementation
-    return ipcRenderer.send('get-system-preference', name);
+    try {
+      return await ipcRenderer.invoke('get-system-preference-async', name);
+    } catch (error) {
+      console.error('Error getting system preference:', error);
+      return null;
+    }
+  }
+  return null;
+};
+
+export const getSystemPreferencesAsync = async () => {
+  if (ensureIpcRenderer()) {
+    try {
+      return await ipcRenderer.invoke('get-system-preferences-async');
+    } catch (error) {
+      console.error('Error getting system preferences:', error);
+      return null;
+    }
+  }
+  return null;
+};
+
+// Legacy sync versions (to be deprecated)
+export const getSystemPreference = (name) => {
+  console.warn('getSystemPreference is deprecated. Use getSystemPreferenceAsync instead.');
+  if (ensureIpcRenderer()) {
+    // Not properly working with contextBridge, use async version instead
+    return null;
   }
   return null;
 };
 
 export const getSystemPreferences = () => {
+  console.warn('getSystemPreferences is deprecated. Use getSystemPreferencesAsync instead.');
   if (ensureIpcRenderer()) {
-    // Would need to be changed to an async pattern in real implementation
-    return ipcRenderer.send('get-system-preferences');
+    // Not properly working with contextBridge, use async version instead
+    return null;
   }
   return null;
 };
@@ -129,10 +183,25 @@ export const requestOpenApp = (id, name) => {
 };
 
 // Native Theme
-export const getShouldUseDarkColors = () => {
+// New async version using invoke
+export const getShouldUseDarkColorsAsync = async () => {
   if (ensureIpcRenderer()) {
-    // Would need to be changed to an async pattern in real implementation
-    return ipcRenderer.send('get-should-use-dark-colors');
+    try {
+      return await ipcRenderer.invoke('get-should-use-dark-colors-async');
+    } catch (error) {
+      console.error('Error getting dark colors preference:', error);
+      return false;
+    }
+  }
+  return false;
+};
+
+// Legacy sync version (to be deprecated)
+export const getShouldUseDarkColors = () => {
+  console.warn('getShouldUseDarkColors is deprecated. Use getShouldUseDarkColorsAsync instead.');
+  if (ensureIpcRenderer()) {
+    // Not properly working with contextBridge, use async version instead
+    return false;
   }
   return false;
 };

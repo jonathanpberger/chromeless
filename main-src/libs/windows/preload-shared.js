@@ -31,17 +31,49 @@ contextBridge.exposeInMainWorld(
           'request-check-for-updates',
           'open-dialog-about',
           'go-to-preferences',
-          // Add other allowed channels here
+          'request-open-in-browser',
+          'request-show-message-box',
+          'request-quit',
+          'request-restart',
+          'request-set-preference',
+          'request-reset-preferences',
+          'request-open-install-location',
+          'request-set-system-preference',
+          'request-get-installed-apps',
+          'request-install-app',
+          'request-update-app',
+          'request-cancel-install-app',
+          'request-cancel-update-app',
+          'request-uninstall-app',
+          'request-open-app',
+          'enqueue-request-restart-snackbar',
+          'request-show-app-menu',
         ];
         if (validChannels.includes(channel)) {
           ipcRenderer.send(channel, ...args);
         }
       },
+      // Add support for invoking async handlers
+      invoke: (channel, ...args) => {
+        const validChannels = [
+          'get-preference-async',
+          'get-preferences-async',
+          'get-system-preference-async',
+          'get-system-preferences-async',
+          'get-should-use-dark-colors-async',
+        ];
+        if (validChannels.includes(channel)) {
+          return ipcRenderer.invoke(channel, ...args);
+        }
+        return Promise.reject(new Error(`Invalid channel: ${channel}`));
+      },
       on: (channel, listener) => {
         const validChannels = [
           'set-is-full-screen',
           'set-is-maximized',
-          // Add other allowed channels here
+          'set-app',
+          'remove-app',
+          'enqueue-snackbar',
         ];
         if (validChannels.includes(channel)) {
           // Deliberately strip event as it includes `sender` 
