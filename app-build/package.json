@@ -1,0 +1,13 @@
+{
+  "name": "chromeless",
+  "productName": "Chromeless",
+  "description": "Turn Any Websites into Site-specific Browsers",
+  "version": "5.0.0",
+  "main": "electron.js",
+  "author": {
+    "name": "Jonathan Berger",
+    "email": "jonathan.p.berger@gmail.com"
+  },
+  "license": "MPL-2.0",
+  "dependencies": {}
+}
